@@ -49,17 +49,3 @@ chmod 700 get_helm.sh
 
 
 # when the packages and tools are completely installed then you create your cluster
-
-# Set the name of the Kind cluster
-CLUSTER_NAME="kubernetes"
-
-# Create a Kind cluster
-kind create cluster --name $CLUSTER_NAME --config kube-conf.yaml
-
-# Set KUBECONFIG environment variable
-export KUBECONFIG="~/.kube/config"
-
-# Wait for the cluster to be ready
-kubectl wait --for=condition=Ready node --all --timeout=300s
-
-echo "Kind cluster $CLUSTER_NAME is now deployed and ready."
