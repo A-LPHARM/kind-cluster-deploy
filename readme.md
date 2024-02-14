@@ -1,6 +1,6 @@
 # Build Your Simple Node Application
 
-To build and deploy your simple Node.js application, you'll need the following requirements installed on your system:
+To build and deploy your simple Node.js application, i will need the following requirements installed on your system:
 
 1. **Docker Desktop:**
    - Install Docker Desktop on Linux:
@@ -51,11 +51,68 @@ To build and deploy your simple Node.js application, you'll need the following r
    - Install Helm:
 
      ```bash
-     curl -LO https://git.io/get_helm.sh
-     chmod 700 get_helm.sh
-     ./get_helm.sh
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
      ```
 
 Make sure to verify the installation of each tool after running the respective commands.
 
-Now you have all the necessary tools to build and deploy your simple Node.js application using Docker, Kind, kubectl, Terraform, and Helm. Follow the instructions for your application deployment using these tools.
+## First Step: Docker Image and Deployment to Docker Hub
+
+1. Create the Dockerfile.
+2. Build the Docker image:
+
+   ```bash
+   docker build . -t henriksin1/node-app:v1
+   ```
+
+3. Login to Docker Hub:
+
+   ```bash
+   docker login -u henriksin1
+   ```
+
+4. Push the Docker image:
+
+   ```bash
+   docker push henriksin1/node-app:v1
+   ```
+
+Now, i can use the image to build my deployment resources in Kubernetes.
+
+## Second Step: Terraform and Kubernetes Deployment
+
+1. After Preparing my Terraform file and Kubernetes manifest file for the Node.js application.
+2. Run Terraform commands:
+
+   ```bash
+   terraform init
+   terraform apply -auto-approve
+   ```
+
+3. Confirm by running:
+
+   ```bash
+   kubectl get pods
+   ```
+
+## Third Step: Prometheus Stack Deployment
+
+1. change directory to the `prometheus-stack` directory.
+2. add the Prometheus Community Helm repository:
+
+   ```bash
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo update
+   ```
+
+3. after building my Terraform file:
+
+   ```bash
+   terraform init
+   terraform apply -auto-approve
+   ```
+
+Now you have all the necessary tools to build and deploy your simple Node.js and prometheus application using Docker, Kind, kubectl, Terraform, and Helm. Follow the instructions for the application deployment using these tools.
+```
