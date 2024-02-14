@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  labels: 
+    app: node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: newapp
+      env: prod
+  strategy: #canary deployment: blue/green deployment
+    rollingUpdate:
+      maxSurge: 25%   # you decide the number or percentage of pods that is left so u can produce more new pods, in this case you will leave 1 pod alive while 4 pods dies
+      maxUnavailable: 25%   # in this seneario you are determining how many pods dies
+    type: RollingUpdate   # this is the rolling out and rolling back
+  template:
+    metadata:
+      name: node-app
+      labels:
+        app: newapp
+        env: prod
+    spec:
+      containers:
+      - name: node-app
+        image: henriksin1/node:v1
+        ports:
+        - containerPort: 3000
