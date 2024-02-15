@@ -96,6 +96,9 @@ Now, i can use the image to build my deployment resources in Kubernetes.
    ```bash
    kubectl get pods
    ```
+4. confirm the application can be viewed
+   https://localhost:30010
+
 
 ## Third Step: Prometheus Stack Deployment
 
@@ -114,5 +117,19 @@ Now, i can use the image to build my deployment resources in Kubernetes.
    terraform apply -auto-approve
    ```
 
-Now you have all the necessary tools to build and deploy your simple Node.js and prometheus application using Docker, Kind, kubectl, Terraform, and Helm. Follow the instructions for the application deployment using these tools.
+4. To confirm all mointoring tools are running 
+   run 
+   ```bash 
+   kubectl get all 
+   ```
+
+5. To view your prometheus mointoring node 
+   ```bash 
+   kubectl port-forward svc/prometheusstack-grafana 3000:80
+   kubectl port-forward svc/prometheusstack-kube-prome-prometheus 9090
+   ```
+   to view
+   https://localhost:3000
+
+Now you have all the necessary tools to build and deploy your simple Node.js and prometheus/grafana application using Docker, Kind, kubectl, Terraform, and Helm. Follow the instructions for the application deployment using these tools.
 ```

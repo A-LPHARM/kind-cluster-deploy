@@ -11,9 +11,4 @@ nodes:
   extraPortMappings:
   - containerPort: 3000
     hostPort: 3000  
-    protocol: TCP
-  extraPortMappings:
-  - containerPort: 9090
-    hostPort: 9090
-    protocol: TCP
-    
+    protocol: TCP    
