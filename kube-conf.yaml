@@ -7,5 +7,9 @@ nodes:
   - containerPort: 30010
     hostPort: 30010   
     protocol: TCP
-
+- role: worker
+  extraPortMappings:
+  - containerPort: 3000
+    hostPort: 3000  
+    protocol: TCP
     
