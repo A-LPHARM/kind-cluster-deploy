@@ -8,7 +8,7 @@ To build and deploy your simple Node.js application, i will need the following r
      ```bash
      sudo yum install -y yum-utils
      sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-     sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin -y docker-compose-plugin
+     sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin -y docker-compose-plugin -y
      sudo systemctl start docker
      sudo usermod -a -G docker ec2-user
      sudo su - ec2-user

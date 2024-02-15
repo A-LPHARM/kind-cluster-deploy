@@ -5,14 +5,7 @@ nodes:
 - role: control-plane
   extraPortMappings:
   - containerPort: 30010
-    hostPort: 3000    
-    protocol: TCP
-    listenAddress: "127.0.0.1"
-- role: worker
-  extraPortMappings:
-  - containerPort: 30001
-    hostPort: 3000
-    listenAddress: "127.0.0.1"
+    hostPort: 30010   
     protocol: TCP
 
     
