@@ -8,7 +8,7 @@ To build and deploy your simple Node.js application, i will need the following r
      ```bash
      sudo yum install -y yum-utils
      sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-     sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+     sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin -y docker-compose-plugin
      sudo systemctl start docker
      sudo usermod -a -G docker ec2-user
      sudo su - ec2-user
@@ -20,9 +20,9 @@ To build and deploy your simple Node.js application, i will need the following r
 
      ```bash
      # For AMD64 / x86_64
-     [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.21.0/kind-linux-amd64
+     [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
      # For ARM64
-     [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.21.0/kind-linux-arm64
+     [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-arm64
      chmod +x ./kind
      sudo mv ./kind /usr/local/bin/kind
      ```
